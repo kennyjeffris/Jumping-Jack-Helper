@@ -1,0 +1,102 @@
+{
+  "intents": [
+    {
+      "name": "AMAZON.CancelIntent",
+      "samples": [
+        "Nevermind",
+        "Cancel"
+      ]
+    },
+    {
+      "name": "AMAZON.HelpIntent",
+      "samples": [
+        "Help"
+      ]
+    },
+    {
+      "name": "AMAZON.PauseIntent",
+      "samples": [
+        "Pause"
+      ]
+    },
+    {
+      "name": "AMAZON.ResumeIntent",
+      "samples": [
+        "Resume",
+        "Continue"
+      ]
+    },
+    {
+      "name": "AMAZON.StopIntent",
+      "samples": [
+        "Stop",
+        "I'm done.",
+        "Quit.",
+        "I hate this."
+      ]
+    },
+    {
+      "name": "jumpJacks",
+      "samples": [
+        "I would like to do {numJumps} jumping jacks",
+        "I would like to jump {numJumps} times",
+        "{numJumps} jumping jacks",
+        "{numJumps} please"
+      ],
+      "slots": [
+        {
+          "name": "numJumps",
+          "type": "AMAZON.NUMBER",
+          "samples": [
+            "{numJumps}",
+            "I would like to jump {numJumps} times",
+            "I would like to do {numJumps} jumping jacks",
+            "{numJumps} jumping jacks"
+          ]
+        }
+      ]
+    }
+  ],
+  "prompts": [
+    {
+      "id": "Elicit.Intent-jumpJacks.IntentSlot-numJumps",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "Okay, how many jumping jacks today?"
+        },
+        {
+          "type": "PlainText",
+          "value": "Okay how many jumping jacks would you like to do?"
+        },
+        {
+          "type": "PlainText",
+          "value": "Awesome, how many?"
+        }
+      ]
+    }
+  ],
+  "dialog": {
+    "version": "1.0",
+    "intents": [
+      {
+        "name": "jumpJacks",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "numJumps",
+            "type": "AMAZON.NUMBER",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicit": "Elicit.Intent-jumpJacks.IntentSlot-numJumps"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
